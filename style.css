@@ -1,0 +1,231 @@
+/* ========== Core & Theme Vars ========== */
+:root{
+  --bg: #fafafa;
+  --card: #ffffff;
+  --text: #1f2937;         /* slate-800 */
+  --muted: #475569;        /* slate-600 */
+  --brand: #2c3e50;        /* brand dark */
+  --brand-2: #34495e;      /* header dark */
+  --accent: #ffcc00;       /* gold accent */
+  --link: #0f62fe;         /* IBM blue */
+  --ring: #94a3b8;         /* focus ring */
+  --radius: 12px;
+  --shadow: 0 10px 30px rgba(2,6,23,.08);
+  --shadow-sm: 0 2px 10px rgba(2,6,23,.08);
+  --maxw: 980px;
+  --space: 24px;
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;
+    --card: #0f172a;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --brand: #111827;
+    --brand-2: #0b1020;
+    --accent: #ffd54a;
+    --link: #8ab4ff;
+    --ring: #475569;
+    --shadow: 0 10px 30px rgba(0,0,0,.55);
+    --shadow-sm: 0 2px 10px rgba(0,0,0,.35);
+  }
+}
+
+/* ========== Base Reset ========== */
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+  line-height:1.7;
+  color:var(--text);
+  background:var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img{ max-width:100%; height:auto; border:0; }
+
+/* Better link defaults */
+a{
+  color:var(--link);
+  text-decoration: none;
+}
+a:hover{ text-decoration: underline; }
+
+/* Visible, accessible focus */
+:focus-visible{
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ========== Header / Intro ========== */
+.site-header{
+  text-align:center;
+  padding:64px 20px 56px;
+  background: linear-gradient(135deg, var(--brand-2), var(--brand));
+  color:#fff;
+}
+.site-header h1{
+  margin:0;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  letter-spacing:.3px;
+}
+.site-header h2{
+  margin:12px 0 0;
+  font-size: clamp(1rem, .6vw + .8rem, 1.25rem);
+  font-weight:400;
+  color: var(--accent);
+}
+
+/* ========== Sticky Nav ========== */
+nav{
+  position: sticky;
+  top:0;
+  z-index: 50;
+  background: var(--brand);
+  backdrop-filter: saturate(120%) blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  box-shadow: var(--shadow-sm);
+}
+nav ul{
+  max-width: var(--maxw);
+  margin:0 auto;
+  padding:12px 16px;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px 18px;
+  align-items:center;
+  justify-content:center;
+  list-style:none;
+}
+nav a{
+  color:#fff;
+  font-weight:600;
+  letter-spacing:.2px;
+  padding:8px 10px;
+  border-radius:8px;
+  transition: all .2s ease;
+  text-decoration:none;
+}
+nav a:hover{ color: var(--accent); }
+nav a[aria-current="page"],
+nav a.active{
+  color: var(--accent);
+  background: rgba(255,255,255,.06);
+  text-decoration:none;
+}
+
+/* ========== Section Cards ========== */
+section{
+  max-width: var(--maxw);
+  margin: 36px auto;
+  padding: clamp(18px, 2.4vw, 28px);
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h2{
+  margin:0 0 16px;
+  padding-bottom:10px;
+  border-bottom: 2px solid var(--brand);
+  color: var(--brand);
+  font-size: clamp(1.2rem, .9vw + 1rem, 1.6rem);
+}
+
+/* Lists (cleaner spacing + custom bullets) */
+section ul{
+  margin: 0;
+  padding-left: 1.2rem;
+  list-style: none;
+}
+section ul li{
+  position: relative;
+  margin: 8px 0;
+  padding-left: 1.2rem;
+}
+section ul li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .7em;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px rgba(255, 204, 0, .18);
+}
+
+/* ========== About / Intro block ========== */
+.intro-section{
+  display:flex;
+  align-items:flex-start;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.profile-pic{
+  width: 190px;
+  height: 190px;
+  border-radius: 999px;
+  object-fit: cover;
+  box-shadow: var(--shadow-sm);
+  border: 4px solid rgba(0,0,0,.04);
+}
+.intro-section p{
+  flex: 1 1 260px;
+  margin:0;
+  color: var(--muted);
+}
+
+/* ========== Publications list (compact + readable) ========== */
+#publications ul li{
+  margin: 12px 0;
+}
+#publications b{
+  color: var(--text);
+}
+
+/* ========== Footer ========== */
+footer{
+  text-align:center;
+  padding: 22px 16px 28px;
+  background: var(--brand);
+  color:#fff;
+  margin-top: 48px;
+  box-shadow: var(--shadow-sm) inset;
+}
+footer p{ margin:0; font-size:.95rem; }
+
+/* ========== Utilities ========== */
+.container{ max-width: var(--maxw); margin: 0 auto; padding: 0 16px; }
+
+.muted{ color: var(--muted); }
+
+/* Slight lift on hover for sections (desktop only) */
+@media (hover:hover){
+  section{ transition: transform .18s ease, box-shadow .18s ease; }
+  section:hover{ transform: translateY(-2px); box-shadow: 0 14px 40px rgba(2,6,23,.12); }
+}
+
+/* ========== Responsive tweaks ========== */
+@media (max-width: 820px){
+  nav ul{ justify-content: flex-start; }
+}
+@media (max-width: 720px){
+  .site-header{ padding: 48px 16px 44px; }
+  section{ margin: 22px 12px; }
+  .profile-pic{ width: 160px; height: 160px; }
+}
+
+/* ========== Print (clean, no color blocks) ========== */
+@media print{
+  nav, footer{ display:none !important; }
+  body{ background:#fff; color:#000; }
+  section{
+    box-shadow:none; border:1px solid #ddd; break-inside: avoid;
+  }
+  a{ color:#000; text-decoration: underline; }
+}
